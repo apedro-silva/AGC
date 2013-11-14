@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="eXPandWSInHeader" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\eXPandWSInHeader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="eXPandWSOutHeader" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>App_Code\eXPandWSOutHeader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MGV5Files" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAoA=</HashCode>
+      <FileName>App_Code\MGV5Files.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MGV5Service" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAIA=</HashCode>
+      <FileName>App_Code\MGV5Service.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Service" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IBAAAAAQAAhAAOAEAgCAgAECAAAAZKAAYABgACIgEAA=</HashCode>
+      <FileName>App_Code\Service.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,146 @@
+use besaswitch
+go
+
+declare @trnId varchar(25)
+select @trnId = 'FC_Amounts_PARSE'
+delete from Exp_MessagesConfigCache where messageName=@trnId and MessageDirection=1
+
+--Parser
+insert into Exp_MessagesConfigCache values(@trnId, 1, 0, '
+<MSG_CONFIG>
+<MS pmsg="ISO 8583 Additional Amounts Parser">
+    <EL n="A1">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#A1" />
+        <P v="#c#2" />
+        <P v="#c#1" />
+       </Fv>
+    </EL>
+    <EL n="A2">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#A2" />
+        <P v="#c#2" />
+        <P v="#c#1" />
+       </Fv>
+    </EL>
+    <EL n="A3">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#NetAvailableBalanceCurrency" />
+        <P v="#c#3" />
+        <P v="#c#1" />
+      </Fv>
+    </EL>
+    <EL n="A4">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#NetAvailableBalanceSign" />
+        <P v="#c#1" />
+        <P v="#c#1" />
+      </Fv>
+    </EL>
+    <EL n="A5">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#NetAvailableBalance" />
+        <P v="#c#12" />
+        <P v="#c#1" />
+      </Fv>
+    </EL>
+
+
+    <EL n="B1">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#B1" />
+        <P v="#c#2" />
+        <P v="#c#1" />
+       </Fv>
+    </EL>
+    <EL n="B2">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#B2" />
+        <P v="#c#2" />
+        <P v="#c#1" />
+       </Fv>
+    </EL>
+    <EL n="B3">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#UnclearedFundsCurrency" />
+        <P v="#c#3" />
+        <P v="#c#1" />
+      </Fv>
+    </EL>
+    <EL n="B4">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#UnclearedFundsSign" />
+        <P v="#c#1" />
+        <P v="#c#1" />
+      </Fv>
+    </EL>
+    <EL n="B5">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#UnclearedFunds" />
+        <P v="#c#12" />
+        <P v="#c#1" />
+      </Fv>
+    </EL>
+
+
+    <EL n="C1">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#C1" />
+        <P v="#c#2" />
+        <P v="#c#1" />
+       </Fv>
+    </EL>
+    <EL n="C2">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#C2" />
+        <P v="#c#2" />
+        <P v="#c#1" />
+       </Fv>
+    </EL>
+    <EL n="C3">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#LedgerBalanceCurrency" />
+        <P v="#c#3" />
+        <P v="#c#1" />
+      </Fv>
+    </EL>
+    <EL n="C4">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#LedgerBalanceSign" />
+        <P v="#c#1" />
+        <P v="#c#1" />
+      </Fv>
+    </EL>
+    <EL n="C5">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#uv#LedgerBalance" />
+        <P v="#c#12" />
+        <P v="#c#1" />
+      </Fv>
+    </EL>
+  </MS>
+
+	<FNS>
+		<f i="0" ty="PVal" tn="SF.Expand.Core.Connectivity.FnParseValGenDecoding, ExpandMsgFns" />
+  </FNS>
+</MSG_CONFIG>
+')
+
+select * from Exp_MessagesConfigCache
+where messageName=@trnId
+and MessageDirection=1

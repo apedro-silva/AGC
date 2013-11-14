@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SF.Expand.Switch.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="eXpandWebService" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost/Switch.MG.V5/Service.asmx</Value>
+    </Setting>
+    <Setting Name="PRTAPL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">APL=sibs.deswin.prt.PrtSrvGateway</Value>
+    </Setting>
+    <Setting Name="PRTSES" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">PRTSES=94500101</Value>
+    </Setting>
+    <Setting Name="SleepOnError" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="PRTPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">14000</Value>
+    </Setting>
+    <Setting Name="PRTIp" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="ExpandPRTService_ExpandWebService_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/Switch.MG.V5/Service.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

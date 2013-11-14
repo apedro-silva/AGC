@@ -1,0 +1,153 @@
+<MSG_CONFIG>
+	<MS pmsg="Movements Field Parser">
+ <BL n="Movements">
+      <Fv fi="0">
+        <P v="#c#ascii" />
+        <P v="#wa#" />
+        <P v="#c#2" />
+        <P v="#c#1" />
+      </Fv>
+	<Fr fi="1">
+		<P v="#cfx#." />
+		<P v="#c#0" />
+	</Fr>
+
+	<EL n="CreateMov">
+		<Ft fi="2">
+			<P v="#un#Movements"/>
+			<P v="#x#."/>
+			<P v="#c#Movement"/>
+		</Ft>
+	</EL>
+
+	<BL n="Movement">
+		<EL n="CreateMovement">
+			<Ft fi="2">
+				<P v="#un#Movements"/>
+				<P v="#x#./Movement[last()]"/>
+				<P v="#c#BranchCode"/>
+			</Ft>
+			<Ft fi="2">
+				<P v="#un#Movements"/>
+				<P v="#x#./Movement[last()]"/>
+				<P v="#c#TransactionLiteral"/>
+			</Ft>
+			<Ft fi="2">
+				<P v="#un#Movements"/>
+				<P v="#x#./Movement[last()]"/>
+				<P v="#c#TxnAmountSign"/>
+			</Ft>
+			<Ft fi="2">
+				<P v="#un#Movements"/>
+				<P v="#x#./Movement[last()]"/>
+				<P v="#c#TxnAmount"/>
+			</Ft>
+			<Ft fi="2">
+				<P v="#un#Movements"/>
+				<P v="#x#./Movement[last()]"/>
+				<P v="#c#DebitCreditFlag"/>
+			</Ft>
+
+			<Ft fi="2">
+				<P v="#un#Movements"/>
+				<P v="#x#./Movement[last()]"/>
+				<P v="#c#ValueDate"/>
+			</Ft>
+
+			<Ft fi="2">
+				<P v="#un#Movements"/>
+				<P v="#x#./Movement[last()]"/>
+				<P v="#c#TransmissionDate"/>
+			</Ft>
+
+			<Ft fi="2">
+				<P v="#un#Movements"/>
+				<P v="#x#./Movement[last()]"/>
+				<P v="#c#TxnSTAN"/>
+			</Ft>
+
+		</EL>
+
+		<EL n="BranchCode">
+			<Fv fi="0">
+				<P v="#c#ascii" />
+				<P v="#uxt#Movements:./Movement[last()]/BranchCode" />
+				<P v="#c#4" />
+				<P v="#c#1" />
+			</Fv>
+		</EL>
+
+		<EL n="TransactionLiteral">
+			<Fv fi="0">
+				<P v="#c#ascii" />
+				<P v="#uxt#Movements:./Movement[last()]/TransactionLiteral" />
+				<P v="#c#3" />
+				<P v="#c#1" />
+			</Fv>
+		</EL>
+
+		<EL n="TxnAmountSign">
+			<Fv fi="0">
+				<P v="#c#ascii" />
+				<P v="#uxt#Movements:./Movement[last()]/TxnAmountSign" />
+				<P v="#c#1" />
+				<P v="#c#1" />
+			</Fv>
+		</EL>
+
+		<EL n="TxnAmount">
+			<Fv fi="0">
+				<P v="#c#ascii" />
+				<P v="#uxt#Movements:./Movement[last()]/TxnAmount" />
+				<P v="#c#12" />
+				<P v="#c#1" />
+			</Fv>
+		</EL>
+		
+		<EL n="DebitCreditFlag">
+			<Fv fi="0">
+				<P v="#c#ascii" />
+				<P v="#uxt#Movements:./Movement[last()]/DebitCreditFlag" />
+				<P v="#c#1" />
+				<P v="#c#1" />
+			</Fv>
+		</EL>
+
+		<EL n="ValueDate">
+			<Fv fi="3">
+				<P v="#c#ascii" />
+				<P v="#uxt#Movements:./Movement[last()]/ValueDate" />
+				<P v="#c#8" />
+				<P v="#c#1" />
+			</Fv>
+		</EL>
+
+		<EL n="TransmissionDate">
+			<Fv fi="0">
+				<P v="#c#ascii" />
+				<P v="#uxt#Movements:./Movement[last()]/TransmissionDate" />
+				<P v="#c#8" />
+				<P v="#c#1" />
+			</Fv>
+		</EL>
+
+		<EL n="TxnSTAN">
+			<Fv fi="0">
+				<P v="#c#ascii" />
+				<P v="#uxt#Movements:./Movement[last()]/TxnSTAN" />
+				<P v="#c#6" />
+				<P v="#c#1" />
+			</Fv>
+		</EL>
+
+	</BL>
+</BL>
+</MS>
+
+<FNS>
+	<f i="0" ty="PVal" tn="SF.Expand.Core.Connectivity.FnParseValGenDecoding, ExpandMsgFns" />
+	<f i="1" ty="PRep" tn="SF.Expand.Core.Connectivity.FnParseNRepGen, ExpandMsgFns" />
+	<f i="2" ty="PTrf" tn="SF.Expand.Core.Connectivity.FnParseTrfAppendXmlEl, ExpandMsgFns" />
+	<f i="3" ty="PVal" tn="SF.Expand.Core.Connectivity.FnParseValValueDate, ISO8583MsgFns" />
+</FNS>
+</MSG_CONFIG>

@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://sf.expand.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://sf.expand.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://sf.expand.com/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eXPandWSInHeader" type="tns:eXPandWSInHeader" />
+      <s:complexType name="eXPandWSInHeader">
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="eXPandWSOutHeader" type="tns:eXPandWSOutHeader" />
+      <s:complexType name="eXPandWSOutHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="eXPandErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="eXPandErrorDescription" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="RunSwitchPipeline">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prtClientMsg" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunSwitchPipelineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="switchResponse" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunCardPipeline">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccountNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunCardPipelineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunCardPipelineResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunFileProcessor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ERMBFileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CCLNFileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EDSTFileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EORIFileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunFileProcessorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunFileProcessorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunFileLogger">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunFileLoggerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunFileLoggerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunFlexCubeFilesProcessor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunFlexCubeFilesProcessorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunFlexCubeFilesProcessorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunDRCCProcessFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilePathName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ForcedFile" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunDRCCProcessFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunDRCCProcessFileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunDRCCExecute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DRCCFileId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunDRCCExecuteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunDRCCExecuteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunDRCCSimulate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DRCCFileId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunDRCCSimulateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunDRCCSimulateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunEchoPipeline">
+        <s:complexType />
+      </s:element>
+      <s:element name="RunEchoPipelineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FlexCubeAtmState" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FlexCubePosState" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PRTState" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunPRTStatusPipeline">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PRTStatus" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunPRTStatusPipelineResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAccountName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AccountNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccountNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAccountNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcessJeEmisRecords">
+        <s:complexType />
+      </s:element>
+      <s:element name="ProcessJeEmisRecordsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RunFiles2EmisInitLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FileId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunFiles2EmisInitLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunFiles2EmisInitLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunFiles2EmisFinishLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FileId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="je" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TextoErro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunFiles2EmisFinishLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunFiles2EmisFinishLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReprocessJeRecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Je" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReprocessJeRecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReprocessJeRecordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunPS2Transaction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DebitAccountNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CreditAccountNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CurrencyCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RunPS2TransactionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RunPS2TransactionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldeXPandWSInHeader">
+    <wsdl:part name="eXPandWSInHeader" element="tns:eXPandWSInHeader" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldeXPandWSOutHeader">
+    <wsdl:part name="eXPandWSOutHeader" element="tns:eXPandWSOutHeader" />
+  </wsdl:message>
+  <wsdl:message name="RunSwitchPipelineSoapIn">
+    <wsdl:part name="parameters" element="tns:RunSwitchPipeline" />
+  </wsdl:message>
+  <wsdl:message name="RunSwitchPipelineSoapOut">
+    <wsdl:part name="parameters" element="tns:RunSwitchPipelineResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunSwitchPipelineeXPandWSInHeader">
+    <wsdl:part name="eXPandWSInHeader" element="tns:eXPandWSInHeader" />
+  </wsdl:message>
+  <wsdl:message name="RunSwitchPipelineeXPandWSOutHeader">
+    <wsdl:part name="eXPandWSOutHeader" element="tns:eXPandWSOutHeader" />
+  </wsdl:message>
+  <wsdl:message name="RunCardPipelineSoapIn">
+    <wsdl:part name="parameters" element="tns:RunCardPipeline" />
+  </wsdl:message>
+  <wsdl:message name="RunCardPipelineSoapOut">
+    <wsdl:part name="parameters" element="tns:RunCardPipelineResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunCardPipelineeXPandWSInHeader">
+    <wsdl:part name="eXPandWSInHeader" element="tns:eXPandWSInHeader" />
+  </wsdl:message>
+  <wsdl:message name="RunCardPipelineeXPandWSOutHeader">
+    <wsdl:part name="eXPandWSOutHeader" element="tns:eXPandWSOutHeader" />
+  </wsdl:message>
+  <wsdl:message name="RunFileProcessorSoapIn">
+    <wsdl:part name="parameters" element="tns:RunFileProcessor" />
+  </wsdl:message>
+  <wsdl:message name="RunFileProcessorSoapOut">
+    <wsdl:part name="parameters" element="tns:RunFileProcessorResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunFileLoggerSoapIn">
+    <wsdl:part name="parameters" element="tns:RunFileLogger" />
+  </wsdl:message>
+  <wsdl:message name="RunFileLoggerSoapOut">
+    <wsdl:part name="parameters" element="tns:RunFileLoggerResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunFlexCubeFilesProcessorSoapIn">
+    <wsdl:part name="parameters" element="tns:RunFlexCubeFilesProcessor" />
+  </wsdl:message>
+  <wsdl:message name="RunFlexCubeFilesProcessorSoapOut">
+    <wsdl:part name="parameters" element="tns:RunFlexCubeFilesProcessorResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunDRCCProcessFileSoapIn">
+    <wsdl:part name="parameters" element="tns:RunDRCCProcessFile" />
+  </wsdl:message>
+  <wsdl:message name="RunDRCCProcessFileSoapOut">
+    <wsdl:part name="parameters" element="tns:RunDRCCProcessFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunDRCCProcessFileeXPandWSInHeader">
+    <wsdl:part name="eXPandWSInHeader" element="tns:eXPandWSInHeader" />
+  </wsdl:message>
+  <wsdl:message name="RunDRCCProcessFileeXPandWSOutHeader">
+    <wsdl:part name="eXPandWSOutHeader" element="tns:eXPandWSOutHeader" />
+  </wsdl:message>
+  <wsdl:message name="RunDRCCExecuteSoapIn">
+    <wsdl:part name="parameters" element="tns:RunDRCCExecute" />
+  </wsdl:message>
+  <wsdl:message name="RunDRCCExecuteSoapOut">
+    <wsdl:part name="parameters" element="tns:RunDRCCExecuteResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunDRCCExecuteeXPandWSInHeader">
+    <wsdl:part name="eXPandWSInHeader" element="tns:eXPandWSInHeader" />
+  </wsdl:message>
+  <wsdl:message name="RunDRCCExecuteeXPandWSOutHeader">
+    <wsdl:part name="eXPandWSOutHeader" element="tns:eXPandWSOutHeader" />
+  </wsdl:message>
+  <wsdl:message name="RunDRCCSimulateSoapIn">
+    <wsdl:part name="parameters" element="tns:RunDRCCSimulate" />
+  </wsdl:message>
+  <wsdl:message name="RunDRCCSimulateSoapOut">
+    <wsdl:part name="parameters" element="tns:RunDRCCSimulateResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunDRCCSimulateeXPandWSInHeader">
+    <wsdl:part name="eXPandWSInHeader" element="tns:eXPandWSInHeader" />
+  </wsdl:message>
+  <wsdl:message name="RunDRCCSimulateeXPandWSOutHeader">
+    <wsdl:part name="eXPandWSOutHeader" element="tns:eXPandWSOutHeader" />
+  </wsdl:message>
+  <wsdl:message name="RunEchoPipelineSoapIn">
+    <wsdl:part name="parameters" element="tns:RunEchoPipeline" />
+  </wsdl:message>
+  <wsdl:message name="RunEchoPipelineSoapOut">
+    <wsdl:part name="parameters" element="tns:RunEchoPipelineResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunEchoPipelineeXPandWSInHeader">
+    <wsdl:part name="eXPandWSInHeader" element="tns:eXPandWSInHeader" />
+  </wsdl:message>
+  <wsdl:message name="RunEchoPipelineeXPandWSOutHeader">
+    <wsdl:part name="eXPandWSOutHeader" element="tns:eXPandWSOutHeader" />
+  </wsdl:message>
+  <wsdl:message name="RunPRTStatusPipelineSoapIn">
+    <wsdl:part name="parameters" element="tns:RunPRTStatusPipeline" />
+  </wsdl:message>
+  <wsdl:message name="RunPRTStatusPipelineSoapOut">
+    <wsdl:part name="parameters" element="tns:RunPRTStatusPipelineResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunPRTStatusPipelineeXPandWSInHeader">
+    <wsdl:part name="eXPandWSInHeader" element="tns:eXPandWSInHeader" />
+  </wsdl:message>
+  <wsdl:message name="RunPRTStatusPipelineeXPandWSOutHeader">
+    <wsdl:part name="eXPandWSOutHeader" element="tns:eXPandWSOutHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAccountName" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAccountNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountNameeXPandWSInHeader">
+    <wsdl:part name="eXPandWSInHeader" element="tns:eXPandWSInHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetAccountNameeXPandWSOutHeader">
+    <wsdl:part name="eXPandWSOutHeader" element="tns:eXPandWSOutHeader" />
+  </wsdl:message>
+  <wsdl:message name="ProcessJeEmisRecordsSoapIn">
+    <wsdl:part name="parameters" element="tns:ProcessJeEmisRecords" />
+  </wsdl:message>
+  <wsdl:message name="ProcessJeEmisRecordsSoapOut">
+    <wsdl:part name="parameters" element="tns:ProcessJeEmisRecordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunFiles2EmisInitLogSoapIn">
+    <wsdl:part name="parameters" element="tns:RunFiles2EmisInitLog" />
+  </wsdl:message>
+  <wsdl:message name="RunFiles2EmisInitLogSoapOut">
+    <wsdl:part name="parameters" element="tns:RunFiles2EmisInitLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunFiles2EmisFinishLogSoapIn">
+    <wsdl:part name="parameters" element="tns:RunFiles2EmisFinishLog" />
+  </wsdl:message>
+  <wsdl:message name="RunFiles2EmisFinishLogSoapOut">
+    <wsdl:part name="parameters" element="tns:RunFiles2EmisFinishLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReprocessJeRecordSoapIn">
+    <wsdl:part name="parameters" element="tns:ReprocessJeRecord" />
+  </wsdl:message>
+  <wsdl:message name="ReprocessJeRecordSoapOut">
+    <wsdl:part name="parameters" element="tns:ReprocessJeRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="RunPS2TransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:RunPS2Transaction" />
+  </wsdl:message>
+  <wsdl:message name="RunPS2TransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:RunPS2TransactionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunSwitchPipeline">
+      <wsdl:input message="tns:RunSwitchPipelineSoapIn" />
+      <wsdl:output message="tns:RunSwitchPipelineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunCardPipeline">
+      <wsdl:input message="tns:RunCardPipelineSoapIn" />
+      <wsdl:output message="tns:RunCardPipelineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunFileProcessor">
+      <wsdl:input message="tns:RunFileProcessorSoapIn" />
+      <wsdl:output message="tns:RunFileProcessorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunFileLogger">
+      <wsdl:input message="tns:RunFileLoggerSoapIn" />
+      <wsdl:output message="tns:RunFileLoggerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunFlexCubeFilesProcessor">
+      <wsdl:input message="tns:RunFlexCubeFilesProcessorSoapIn" />
+      <wsdl:output message="tns:RunFlexCubeFilesProcessorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunDRCCProcessFile">
+      <wsdl:input message="tns:RunDRCCProcessFileSoapIn" />
+      <wsdl:output message="tns:RunDRCCProcessFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunDRCCExecute">
+      <wsdl:input message="tns:RunDRCCExecuteSoapIn" />
+      <wsdl:output message="tns:RunDRCCExecuteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunDRCCSimulate">
+      <wsdl:input message="tns:RunDRCCSimulateSoapIn" />
+      <wsdl:output message="tns:RunDRCCSimulateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunEchoPipeline">
+      <wsdl:input message="tns:RunEchoPipelineSoapIn" />
+      <wsdl:output message="tns:RunEchoPipelineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunPRTStatusPipeline">
+      <wsdl:input message="tns:RunPRTStatusPipelineSoapIn" />
+      <wsdl:output message="tns:RunPRTStatusPipelineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountName">
+      <wsdl:input message="tns:GetAccountNameSoapIn" />
+      <wsdl:output message="tns:GetAccountNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessJeEmisRecords">
+      <wsdl:input message="tns:ProcessJeEmisRecordsSoapIn" />
+      <wsdl:output message="tns:ProcessJeEmisRecordsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunFiles2EmisInitLog">
+      <wsdl:input message="tns:RunFiles2EmisInitLogSoapIn" />
+      <wsdl:output message="tns:RunFiles2EmisInitLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunFiles2EmisFinishLog">
+      <wsdl:input message="tns:RunFiles2EmisFinishLogSoapIn" />
+      <wsdl:output message="tns:RunFiles2EmisFinishLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReprocessJeRecord">
+      <wsdl:input message="tns:ReprocessJeRecordSoapIn" />
+      <wsdl:output message="tns:ReprocessJeRecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RunPS2Transaction">
+      <wsdl:input message="tns:RunPS2TransactionSoapIn" />
+      <wsdl:output message="tns:RunPS2TransactionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://sf.expand.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:HelloWorldeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:HelloWorldeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunSwitchPipeline">
+      <soap:operation soapAction="http://sf.expand.com/RunSwitchPipeline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RunSwitchPipelineeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:RunSwitchPipelineeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunCardPipeline">
+      <soap:operation soapAction="http://sf.expand.com/RunCardPipeline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RunCardPipelineeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:RunCardPipelineeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunFileProcessor">
+      <soap:operation soapAction="http://sf.expand.com/RunFileProcessor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunFileLogger">
+      <soap:operation soapAction="http://sf.expand.com/RunFileLogger" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunFlexCubeFilesProcessor">
+      <soap:operation soapAction="http://sf.expand.com/RunFlexCubeFilesProcessor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunDRCCProcessFile">
+      <soap:operation soapAction="http://sf.expand.com/RunDRCCProcessFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RunDRCCProcessFileeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:RunDRCCProcessFileeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunDRCCExecute">
+      <soap:operation soapAction="http://sf.expand.com/RunDRCCExecute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RunDRCCExecuteeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:RunDRCCExecuteeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunDRCCSimulate">
+      <soap:operation soapAction="http://sf.expand.com/RunDRCCSimulate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RunDRCCSimulateeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:RunDRCCSimulateeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunEchoPipeline">
+      <soap:operation soapAction="http://sf.expand.com/RunEchoPipeline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RunEchoPipelineeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:RunEchoPipelineeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunPRTStatusPipeline">
+      <soap:operation soapAction="http://sf.expand.com/RunPRTStatusPipeline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RunPRTStatusPipelineeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:RunPRTStatusPipelineeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountName">
+      <soap:operation soapAction="http://sf.expand.com/GetAccountName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetAccountNameeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetAccountNameeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessJeEmisRecords">
+      <soap:operation soapAction="http://sf.expand.com/ProcessJeEmisRecords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunFiles2EmisInitLog">
+      <soap:operation soapAction="http://sf.expand.com/RunFiles2EmisInitLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunFiles2EmisFinishLog">
+      <soap:operation soapAction="http://sf.expand.com/RunFiles2EmisFinishLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReprocessJeRecord">
+      <soap:operation soapAction="http://sf.expand.com/ReprocessJeRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunPS2Transaction">
+      <soap:operation soapAction="http://sf.expand.com/RunPS2Transaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://sf.expand.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:HelloWorldeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:HelloWorldeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunSwitchPipeline">
+      <soap12:operation soapAction="http://sf.expand.com/RunSwitchPipeline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RunSwitchPipelineeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RunSwitchPipelineeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunCardPipeline">
+      <soap12:operation soapAction="http://sf.expand.com/RunCardPipeline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RunCardPipelineeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RunCardPipelineeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunFileProcessor">
+      <soap12:operation soapAction="http://sf.expand.com/RunFileProcessor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunFileLogger">
+      <soap12:operation soapAction="http://sf.expand.com/RunFileLogger" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunFlexCubeFilesProcessor">
+      <soap12:operation soapAction="http://sf.expand.com/RunFlexCubeFilesProcessor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunDRCCProcessFile">
+      <soap12:operation soapAction="http://sf.expand.com/RunDRCCProcessFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RunDRCCProcessFileeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RunDRCCProcessFileeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunDRCCExecute">
+      <soap12:operation soapAction="http://sf.expand.com/RunDRCCExecute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RunDRCCExecuteeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RunDRCCExecuteeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunDRCCSimulate">
+      <soap12:operation soapAction="http://sf.expand.com/RunDRCCSimulate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RunDRCCSimulateeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RunDRCCSimulateeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunEchoPipeline">
+      <soap12:operation soapAction="http://sf.expand.com/RunEchoPipeline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RunEchoPipelineeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RunEchoPipelineeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunPRTStatusPipeline">
+      <soap12:operation soapAction="http://sf.expand.com/RunPRTStatusPipeline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RunPRTStatusPipelineeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RunPRTStatusPipelineeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountName">
+      <soap12:operation soapAction="http://sf.expand.com/GetAccountName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetAccountNameeXPandWSInHeader" part="eXPandWSInHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetAccountNameeXPandWSOutHeader" part="eXPandWSOutHeader" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessJeEmisRecords">
+      <soap12:operation soapAction="http://sf.expand.com/ProcessJeEmisRecords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunFiles2EmisInitLog">
+      <soap12:operation soapAction="http://sf.expand.com/RunFiles2EmisInitLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunFiles2EmisFinishLog">
+      <soap12:operation soapAction="http://sf.expand.com/RunFiles2EmisFinishLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReprocessJeRecord">
+      <soap12:operation soapAction="http://sf.expand.com/ReprocessJeRecord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunPS2Transaction">
+      <soap12:operation soapAction="http://sf.expand.com/RunPS2Transaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://localhost/Switch.MG.V5/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://localhost/Switch.MG.V5/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpandPRTService", "ExpandPRTService.csproj", "{55C8C80D-5614-422B-8D91-4D91FF80093A}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupExpandPRTService", "SetupPRTClientService\SetupPRTClientService.vdproj", "{A04C70EC-7A39-40D1-88B5-D9BA41CEEE93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpandTrace", "..\..\Common\ExpandTrace\ExpandTrace.csproj", "{49954703-42EF-4D2D-8A5F-D93A5F141339}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 4
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ExpandPRTService.csproj
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = SetupPRTClientService\\SetupPRTClientService.vdproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = SetupPRTClientService\\
+		SccProjectUniqueName3 = ..\\..\\Common\\ExpandTrace\\ExpandTrace.csproj
+		SccProjectName3 = \u0022$/SWITCH-MG5/Common/ExpandTrace\u0022,\u0020NOKAAAAA
+		SccLocalPath3 = ..\\..\\Common\\ExpandTrace
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55C8C80D-5614-422B-8D91-4D91FF80093A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55C8C80D-5614-422B-8D91-4D91FF80093A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55C8C80D-5614-422B-8D91-4D91FF80093A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55C8C80D-5614-422B-8D91-4D91FF80093A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A04C70EC-7A39-40D1-88B5-D9BA41CEEE93}.Debug|Any CPU.ActiveCfg = Debug
+		{A04C70EC-7A39-40D1-88B5-D9BA41CEEE93}.Debug|Any CPU.Build.0 = Debug
+		{A04C70EC-7A39-40D1-88B5-D9BA41CEEE93}.Release|Any CPU.ActiveCfg = Release
+		{A04C70EC-7A39-40D1-88B5-D9BA41CEEE93}.Release|Any CPU.Build.0 = Release
+		{49954703-42EF-4D2D-8A5F-D93A5F141339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49954703-42EF-4D2D-8A5F-D93A5F141339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49954703-42EF-4D2D-8A5F-D93A5F141339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49954703-42EF-4D2D-8A5F-D93A5F141339}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
